@@ -1,6 +1,6 @@
 # Theater Service
 
-###  Theater Service is mainly intended to consume TheaterCreatedEvent published by a provider. In addition, it also provides endpoints to create/get/get history of a theater. 
+###  This demo app, Theater Service, consumes TheaterCreatedEvent published by a provider. It also provides endpoints to create/get/get history of a theater. 
 A newly created theater will be in PENDING status, when a TheaterCreatedEvent is consumed, it updates the theater status to CREATED, and keeps a log of its history.
 
 * **A. Prerequisites**
@@ -50,12 +50,7 @@ A newly created theater will be in PENDING status, when a TheaterCreatedEvent is
 
 ### PubSub
 
-For testing purpose, we are using EMQ X MQTT public broker [https://www.emqx.io/mqtt/public-mqtt5-broker](https://www.emqx.io/mqtt/public-mqtt5-broker) so exemplar .NET app can communicate with this service through MQTT pubsub.
-
-
-### Tracing
-
-Dapr handles tracing in PubSub automatically. Open Zipkin on [http://localhost:9411/zipkin](http://localhost:9411/zipkin), click on "Find a Trace" next to the logo, then click on "Run Query" button to launch the traces for the calls, default to last 15 minutes, configure the settings to retrieve more tracing based on the time span. 
+For testing purpose, we are using EMQ X MQTT public broker [https://www.emqx.io/mqtt/public-mqtt5-broker](https://www.emqx.io/mqtt/public-mqtt5-broker) so the Subscriber app can communicate with this service through MQTT pubsub.
 
 
 ### Instructions to deploy to AKS
