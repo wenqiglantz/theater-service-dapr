@@ -1,0 +1,10 @@
+apiVersion: dapr.io/v1alpha1
+kind: Subscription
+metadata:
+  name: dii-integration
+spec:
+  topic: dii.integration.customerservice.theaterv1
+  route: /dii.integration.customerservice.theaterv1
+  pubsubname: dii-integration
+scopes:
+- theater-service

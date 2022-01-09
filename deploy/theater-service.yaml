@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: theater-service-deployment
+  labels:
+    app: theater-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: theater-service
+  template:
+    metadata:
+      labels:
+        app: theater-service
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "theater-service"
+        dapr.io/app-port: "9000"
+        dapr.io/config: "dapr-config"
+        dapr.io/log-level: "debug"
+        dapr.io/sidecar-liveness-probe-delay-seconds: "60"
+    spec:
+      containers:
+        - name: theater-service
+          image: exemplar.azurecr.io/theater-service
+          env:
+            - name: DAPR_HTTP_PORT
+              value: "3500"
+            - name: DAPR_GRPC_PORT
+              value: "50001"
+          readinessProbe:
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: 60
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          ports:
+            - containerPort: 9000
+          imagePullPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: theater-service-svc
+  labels:
+    app: theater-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: theater-service
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000

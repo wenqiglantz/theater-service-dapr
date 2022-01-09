@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="create-custom-site-table" author="wenqi.glantz">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="CUSTOM_SITE"/>
+            </not>
+        </preConditions>
+        <createTable tableName="CUSTOM_SITE">
+            <column name="ID" type="varchar2(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="VERSION" type="bigint"/>
+            <column name="CUSTOM_SITE_ID" type="varchar2(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CUSTOM_SITE_CODE" type="varchar2(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INSERTED_AT" type="timestamp(6)"/>
+            <column name="INSERTED_BY" type="varchar2(255)"/>
+            <column name="UPDATED_AT" type="timestamp(6)"/>
+            <column name="UPDATED_BY" type="varchar2(255)"/>
+        </createTable>
+        <addUniqueConstraint tableName="CUSTOM_SITE" constraintName="UDX_CUSTOM_SITE"
+                             columnNames="CUSTOM_SITE_ID"/>
+    </changeSet>
+
+    <changeSet id="create-theater-table" author="wenqi.glantz">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="THEATER"/>
+            </not>
+        </preConditions>
+        <createTable tableName="THEATER">
+            <column name="ID" type="varchar2(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="VERSION" type="bigint"/>
+            <column name="THEATER_ID" type="varchar2(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CUSTOM_SITE_ID" type="varchar2(36)">
+                <constraints nullable="false" references="CUSTOM_SITE(ID)"
+                             foreignKeyName="FK_THEATER_CUSTOM_SITE"/>
+            </column>
+            <column name="CREATOR_SUBJECT_ID" type="varchar2(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATOR_ISSUER_ID" type="varchar2(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS" type="varchar2(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INSERTED_AT" type="timestamp(6)"/>
+            <column name="INSERTED_BY" type="varchar2(255)"/>
+            <column name="UPDATED_AT" type="timestamp(6)"/>
+            <column name="UPDATED_BY" type="varchar2(255)"/>
+        </createTable>
+        <addUniqueConstraint tableName="THEATER" constraintName="UDX_THEATER"
+                             columnNames="THEATER_ID"/>
+        <createIndex tableName="THEATER" indexName="IDX_THEATER_STATUS" unique="false">
+            <column name="STATUS"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="create-theaterInfo-history-table" author="wenqi.glantz">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="THEATER_HISTORY"/>
+            </not>
+        </preConditions>
+        <createTable tableName="THEATER_HISTORY">
+            <column name="ID" type="varchar2(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="VERSION" type="bigint"/>
+            <column name="THEATER_ID" type="varchar2(36)">
+                <constraints nullable="false" references="THEATER(ID)"
+                             foreignKeyName="FK_THEATER_HISTORY_THEATER"/>
+            </column>
+            <column name="STATUS" type="varchar2(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INSERTED_AT" type="timestamp(6)"/>
+            <column name="INSERTED_BY" type="varchar2(255)"/>
+            <column name="UPDATED_AT" type="timestamp(6)"/>
+            <column name="UPDATED_BY" type="varchar2(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-test-table" author="wenqi.glantz">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="TEST"/>
+            </not>
+        </preConditions>
+        <createTable tableName="TEST">
+            <column name="ID" type="varchar2(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="VERSION" type="bigint"/>
+            <column name="INSERTED_AT" type="timestamp(6)"/>
+            <column name="INSERTED_BY" type="varchar2(255)"/>
+            <column name="UPDATED_AT" type="timestamp(6)"/>
+            <column name="UPDATED_BY" type="varchar2(255)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

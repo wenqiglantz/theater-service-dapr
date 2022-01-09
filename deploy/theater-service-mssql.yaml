@@ -1,0 +1,52 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: theater-sqlserver-deployment
+  namespace: default
+  labels:
+    app: theater-service
+    service: theater-sqlserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: theater-sqlserver
+  template:
+    metadata:
+      labels:
+        app: theater-service
+        service: theater-sqlserver
+    spec:
+      containers:
+        - name: theater-sqlserver
+          image: exemplar.azurecr.io/microsoft/mssql-server-linux
+          imagePullPolicy: Always
+          ports:
+            - name: sqlserver
+              containerPort: 1433
+              protocol: TCP
+          env:
+            - name: SA_PASSWORD
+              value: B00t1ful
+            - name: ACCEPT_EULA
+              value: "Y"
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: theater-sqlserver-svc
+  namespace: default
+  labels:
+    app: theater-service
+    service: theater-sqlserver
+spec:
+  type: NodePort
+  ports:
+    - port: 1433
+      targetPort: 1433
+      nodePort: 31433
+      protocol: TCP
+      name: tds
+  selector:
+    service: theater-sqlserver

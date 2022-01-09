@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  # customer-sqlserver
+
+  ############################
+  # SQL Server service
+  #
+  # From your local development environment:
+  #  - Connection String: Server=customer-sqlserver.lvh.me,1433;Database=Customer;User Id=SA;Password=B00t1ful
+  #  - For SSMS:
+  #      - Server Name: customer-sqlserver.lvh.me,1433
+  #      - Authentication: SQL Server Authentication
+  #      - Login: SA
+  #      - Password: B00t1ful
+  # From within Docker:
+  #  - Connection String: Server=customer-sqlserver;Database=Customer;User Id=SA;Password=B00t1ful
+  ############################
+  theater-sqlserver:
+    image: microsoft/mssql-server-linux
+    build: .
+    container_name: theater-sqlserver
+    restart: unless-stopped
+    environment:
+      MSSQL_SA_PASSWORD: B00t1ful
+      SA_PASSWORD: B00t1ful
+      MSSQL_DB1: Theater
+      MSSQL_DB2: Customer
+      ACCEPT_EULA: "Y"
+    ports:
+      - 1433:1433
+    networks:
+      - dii
+
+networks:
+  dii:
+    driver: "bridge"

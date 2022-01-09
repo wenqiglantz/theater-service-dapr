@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zipkin
+  namespace: default
+  labels:
+    app: theater-service
+    service: zipkin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: zipkin
+  template:
+    metadata:
+      labels:
+        app: theater-service
+        service: zipkin
+    spec:
+      containers:
+        - name: zipkin
+          image: openzipkin/zipkin-slim
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 9411
+              protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: zipkin
+  namespace: default
+  labels:
+    app: theater-service
+    service: zipkin
+spec:
+  type: LoadBalancer
+  selector:
+    service: zipkin
+  ports:
+    - protocol: TCP
+      port: 9411
+      targetPort: 9411
