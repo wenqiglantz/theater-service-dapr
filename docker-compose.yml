@@ -38,31 +38,6 @@ services:
   zipkin:
     image: openzipkin/zipkin-slim
 
-  ############################
-  # Redis (commented out as we are using a public mqtt broker for testing, no need for local instance of redis or mosquitto)
-  ############################
-#  redis:
-#    image: redis:alpine
-#    container_name: Dapr.redis
-#    ports:
-#      - "6379"
-#    networks:
-#      - dii
-
-#  ############################
-#  # MQTT - mosquitto
-#  ############################
-#  mosquitto:
-#    container_name: Dapr.mosquitto
-#    image: eclipse-mosquitto:1.6.10
-##    volumes:
-##      - ./theater-service-dapr-components:/mosquitto/config/
-#    ports:
-#      - "8883:8883"
-#    networks:
-#      - dii
-#    restart: unless-stopped
-
 networks:
   dii:
     driver: bridge

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set an admin login and password for your database
-export adminlogin=sqladmin
-export password=B00t1ful
+export adminlogin=<YOUR_USERNAME>
+export password=<YOUR_PASSWORD>
 
 # The logical server name has to be unique in the system
 export servername=theater-sqlserver
@@ -12,7 +12,7 @@ export startip=0.0.0.0
 export endip=223.255.255.255
 
 # the name of the resource group
-export rg=k8s-demo
+export rg=<YOUR_RESOURCE_GROUP>
 
 # the name of the database
 export db=Theater
