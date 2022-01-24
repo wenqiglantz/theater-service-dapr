@@ -20,7 +20,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.0</spring-cloud.version>
-		<springdoc-openapi.version>1.5.8</springdoc-openapi.version>
+		<springdoc-openapi.version>1.6.4</springdoc-openapi.version>
 		<h2.version>1.4.200</h2.version>
 		<lombok.version>1.18.22</lombok.version>
 		<database-migration.version>1.0.0.7+b2f00c</database-migration.version>
