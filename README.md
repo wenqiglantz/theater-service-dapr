@@ -55,4 +55,7 @@ For testing purpose, we are using EMQ X MQTT public broker [https://www.emqx.io/
 
 ### Instructions to deploy to AKS
 
+Refer to my Medium article for detailed instructions to deploy to Azure Kubernetes Service: 
+https://betterprogramming.pub/how-to-deploy-microservice-using-dapr-in-azure-kubernetes-service-da75319dd0ea?sk=54a491852d5993df0a1eebf7387ccad2
+
 
