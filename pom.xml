@@ -29,7 +29,7 @@
 		<dapr.version>1.11.0</dapr.version>
 		<commons-cli.version>1.6.0</commons-cli.version>
 		<junit-jupiter.version>5.10.2</junit-jupiter.version>
-		<jmock.version>2.12.0</jmock.version>
+		<jmock.version>2.13.0</jmock.version>
 		<wiremock.version>2.27.2</wiremock.version>
 		<pact-consumer-junit5.version>4.2.6</pact-consumer-junit5.version>
 		<pact-consumer-java8.version>4.1.42</pact-consumer-java8.version>
