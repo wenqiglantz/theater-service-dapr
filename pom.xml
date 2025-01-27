@@ -25,7 +25,7 @@
 		<lombok.version>1.18.36</lombok.version>
 		<database-migration.version>1.0.0.7+b2f00c</database-migration.version>
 		<mssql-jdbc.version>12.9.0.jre11-preview</mssql-jdbc.version>
-		<commons-codec.version>1.17.2</commons-codec.version>
+		<commons-codec.version>1.18.0</commons-codec.version>
 		<dapr.version>1.13.3</dapr.version>
 		<commons-cli.version>1.9.0</commons-cli.version>
 		<junit-jupiter.version>5.11.4</junit-jupiter.version>
