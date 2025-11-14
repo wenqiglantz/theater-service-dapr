@@ -24,7 +24,7 @@
 		<h2.version>2.4.240</h2.version>
 		<lombok.version>1.18.42</lombok.version>
 		<database-migration.version>1.0.0.7+b2f00c</database-migration.version>
-		<mssql-jdbc.version>13.2.1.jre11</mssql-jdbc.version>
+		<mssql-jdbc.version>13.3.0.jre11-preview</mssql-jdbc.version>
 		<commons-codec.version>1.20.0</commons-codec.version>
 		<dapr.version>1.16.0</dapr.version>
 		<commons-cli.version>1.11.0</commons-cli.version>
