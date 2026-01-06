@@ -28,7 +28,7 @@
 		<commons-codec.version>1.20.0</commons-codec.version>
 		<dapr.version>1.16.0</dapr.version>
 		<commons-cli.version>1.11.0</commons-cli.version>
-		<junit-jupiter.version>6.0.1</junit-jupiter.version>
+		<junit-jupiter.version>6.0.2</junit-jupiter.version>
 		<jmock.version>2.13.1</jmock.version>
 		<wiremock.version>2.27.2</wiremock.version>
 		<pact-consumer-junit5.version>4.2.6</pact-consumer-junit5.version>
