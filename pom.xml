@@ -30,7 +30,7 @@
 		<commons-cli.version>1.11.0</commons-cli.version>
 		<junit-jupiter.version>6.0.3</junit-jupiter.version>
 		<jmock.version>2.13.1</jmock.version>
-		<wiremock.version>2.27.2</wiremock.version>
+		<wiremock.version>3.0.1</wiremock.version>
 		<pact-consumer-junit5.version>4.2.6</pact-consumer-junit5.version>
 		<pact-consumer-java8.version>4.1.43</pact-consumer-java8.version>
 
